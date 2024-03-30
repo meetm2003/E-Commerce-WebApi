@@ -14,7 +14,7 @@ namespace ecommerce
 
             // Add services to the container.
             builder.Services.AddDbContext<EcommDbContext>(options =>
-            options.UseSqlServer(builder.Configuration.GetConnectionString("DbConn")));
+            options.UseSqlServer(builder.Configuration.GetConnectionString("Data Source=(localdb)\\ProjectModels;Initial Catalog=Ecomm;Integrated Security=True;")));
 
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
