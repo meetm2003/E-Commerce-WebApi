@@ -1,0 +1,38 @@
+﻿@page
+@model IEnumerable<ecommerce.Model.Product> // Expect an IEnumerable of Product
+
+@{
+    ViewBag.Title = "Home Page";
+    var loggedIn = ViewBag.U_Name != null; // Check if the user is logged in
+}
+
+<div class="header">
+    <!-- Display user name and image if logged in, else show login link -->
+    @if (loggedIn)
+    {
+        <span>@ViewBag.U_Name</span>
+        <img src="@ViewBag.U_Img" alt="User Image" />
+    }
+    else
+    {
+        <a href="@Url.Action("Login", "Account")">Login</a>
+    }
+</div>
+
+<div class="product-list">
+    @foreach (var product in Model) // Iterate over the collection of products
+    {
+        <div class="product">
+            <!-- Convert the byte array to a base64 string -->
+            @{
+                var base64Image = Convert.ToBase64String(product.P_Img);
+                var imgSrc = string.Format("data:image/png;base64,{0}", base64Image);
+            }
+            <!-- Set the src attribute to the base64 string -->
+            <img src="@imgSrc" alt="Product Image" />
+            <h2>@product.P_Name</h2>
+            <p>@product.P_Price</p>
+            <a href="@Url.Action("ProductDetail", "Product", new { id = product.P_Id })">View</a>
+        </div>
+    }
+</div>

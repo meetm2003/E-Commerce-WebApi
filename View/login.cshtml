@@ -1,0 +1,24 @@
+﻿@page
+@model ecommerce.Model.User
+@{
+    ViewBag.Title = "Login";
+}
+
+<h2>Login</h2>
+
+@using (Html.BeginForm("Login", "Account", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-group">
+        <label for="u_name">Username:</label>
+        <input type="text" id="u_name" name="u_name" required>
+    </div>
+
+    <div class="form-group">
+        <label for="u_pass">Password:</label>
+        <input type="password" id="u_pass" name="u_pass" required>
+    </div>
+
+    <button type="submit">Login</button>
+}

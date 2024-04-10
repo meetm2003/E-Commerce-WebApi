@@ -1,0 +1,39 @@
+﻿@page
+@model ecommerce.Model.User
+@{
+    ViewBag.Title = "Sign Up";
+}
+
+<h2>Sign Up</h2>
+
+@using (Html.BeginForm("SignUp", "Account", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.U_Name)
+        @Html.TextBoxFor(model => model.U_Name, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.U_Email)
+        @Html.TextBoxFor(model => model.U_Email, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.U_Address)
+        @Html.TextBoxFor(model => model.U_Address, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.U_Mob_Num)
+        @Html.TextBoxFor(model => model.U_Mob_Num, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.U_Pass)
+        @Html.PasswordFor(model => model.U_Pass, new { @class = "form-control" })
+    </div>
+
+    <button type="submit" class="btn btn-primary">Sign Up</button>
+}

@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ecommerce.Model;
 
@@ -10,9 +11,11 @@ using ecommerce.Model;
 namespace ecommerce.Migrations
 {
     [DbContext(typeof(EcommDbContext))]
-    partial class EcommDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240410065719_InitialMigration")]
+    partial class InitialMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -58,10 +61,6 @@ namespace ecommerce.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("P_Id"));
 
-                    b.Property<byte[]>("P_Img")
-                        .IsRequired()
-                        .HasColumnType("varbinary(max)");
-
                     b.Property<string>("P_Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -96,10 +95,6 @@ namespace ecommerce.Migrations
                     b.Property<string>("U_Email")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<byte[]>("U_Img")
-                        .IsRequired()
-                        .HasColumnType("varbinary(max)");
 
                     b.Property<int>("U_Mob_Num")
                         .HasColumnType("int");
